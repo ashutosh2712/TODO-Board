@@ -1,21 +1,169 @@
+/* General Board Layout */
 .todo-board {
   display: flex;
   justify-content: space-around;
   padding: 20px;
+  gap: 20px;
+  align-items: flex-start;
+  background: #f5f5f5;
+  min-height: 100vh;
 }
+
+/* Task Columns */
 .column {
-  width: 30%;
-  min-height: 200px;
-  padding: 10px;
-  border-radius: 5px;
-  background: #e0e0e0;
+  flex: 1;
+  min-height: 300px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #e8eaf6;
   text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
+
+.column:hover {
+  transform: scale(1.02);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Task Cards */
 .task {
-  padding: 10px;
-  margin: 5px;
+  padding: 15px;
+  margin: 10px auto;
+  width: 90%;
   background: white;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   cursor: grab;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.task:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.task p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Priority Tags */
+.priority-high {
+  color: white;
+  background: #e53935;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.priority-medium {
+  color: white;
+  background: #ffb300;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.priority-low {
+  color: white;
+  background: #43a047;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Add Task Button */
+button {
+  background: #6200ea;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+  background: #3700b3;
+  transform: scale(1.05);
+}
+
+/* ========================== MEDIA QUERIES (TABLET) ========================== */
+@media screen and (max-width: 1024px) {
+  .todo-board {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .column {
+    width: 90%;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .task {
+    width: 92%;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  button {
+    width: fit-content;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+/* ========================== MEDIA QUERIES (MOBILE) ========================== */
+@media screen and (max-width: 600px) {
+  .todo-board {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .column {
+    width: 95%;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .task {
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  button {
+    width: fit-content;
+    font-size: 0.9rem;
+    padding: 8px;
+  }
 }
