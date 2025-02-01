@@ -7,18 +7,21 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 const TodoBoard = () => {
   const [tasks, setTasks] = useState([
     {
+      id: 1,
       title: "Task 1",
       status: "To Do",
       description: "Description 1",
       priority: "High",
     },
     {
+      id: 2,
       title: "Task 2",
       status: "In Progress",
       description: "Description 2",
       priority: "Medium",
     },
     {
+      id: 3,
       title: "Task 3",
       status: "Done",
       description: "Description 3",
@@ -26,19 +29,24 @@ const TodoBoard = () => {
     },
   ]);
 
-  const moveTask = (taskIndex, fromStatus, toStatus) => {
-    setTasks((prevTasks) => {
-      const newTasks = [...prevTasks];
-      const task = newTasks.splice(taskIndex, 1)[0];
-      task.status = toStatus;
-      return [...newTasks, task];
-    });
+  const moveTask = (taskId, fromStatus, toStatus) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, status: toStatus } : task
+      )
+    );
   };
 
   const addTask = (title, description, priority) => {
     setTasks((prevTasks) => [
       ...prevTasks,
-      { title, status: "To Do", description, priority },
+      {
+        id: prevTasks.length + 1,
+        title,
+        status: "To Do",
+        description,
+        priority,
+      },
     ]);
   };
 

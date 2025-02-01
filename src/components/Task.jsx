@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useDrag } from "react-dnd";
 import { TASK_TYPE } from "../constants/task";
 
-const Task = ({ task, index }) => {
+const Task = ({ task }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: TASK_TYPE,
-    item: { index, from: task.status },
+    item: { id: task.id, from: task.status },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
