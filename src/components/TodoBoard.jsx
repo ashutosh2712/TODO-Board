@@ -8,24 +8,43 @@ const TodoBoard = () => {
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      title: "Task 1",
+      title: "Prepare Presentation",
       status: "To Do",
-      description: "Description 1",
+      description: "Create slides for the upcoming meeting",
+      dueDate: "2025-02-10",
       priority: "High",
     },
     {
       id: 2,
-      title: "Task 2",
+      title: "Code Review",
       status: "In Progress",
-      description: "Description 2",
+      description: "Review pull requests and provide feedback",
+      dueDate: "2025-02-12",
       priority: "Medium",
     },
     {
       id: 3,
-      title: "Task 3",
+      title: "Deploy Application",
       status: "Done",
-      description: "Description 3",
+      description: "Deploy latest updates to the production server",
+      dueDate: "2025-02-15",
       priority: "Low",
+    },
+    {
+      id: 4,
+      title: "Write Blog Post",
+      status: "To Do",
+      description: "Draft a new blog post on React best practices",
+      dueDate: "2025-02-18",
+      priority: "Medium",
+    },
+    {
+      id: 5,
+      title: "Team Meeting",
+      status: "In Progress",
+      description: "Discuss project updates and roadblocks",
+      dueDate: "2025-02-20",
+      priority: "High",
     },
   ]);
 
@@ -37,7 +56,7 @@ const TodoBoard = () => {
     );
   };
 
-  const addTask = (title, description, priority) => {
+  const addTask = (title, description, dueDate, priority) => {
     setTasks((prevTasks) => [
       ...prevTasks,
       {
@@ -45,6 +64,7 @@ const TodoBoard = () => {
         title,
         status: "To Do",
         description,
+        dueDate,
         priority,
       },
     ]);
@@ -54,7 +74,9 @@ const TodoBoard = () => {
     <DndProvider backend={HTML5Backend}>
       <div className="todo-board">
         <button
-          onClick={() => addTask("New Task", "New Description", "Medium")}
+          onClick={() =>
+            addTask("New Task", "New Description", "2025-02-20", "Medium")
+          }
         >
           Add Task
         </button>

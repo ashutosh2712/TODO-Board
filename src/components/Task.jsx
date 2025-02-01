@@ -13,13 +13,19 @@ const Task = ({ task }) => {
 
   const [isEditing, setEditing] = useState(false);
   const [title, setTitle] = useState(task.title);
+  const [showDetails, setShowDetails] = useState(false);
 
   const handleEdit = () => {
     setEditing(!isEditing);
   };
 
   return (
-    <div ref={drag} className="task" style={{ opacity: isDragging ? 0.5 : 1 }}>
+    <div
+      ref={drag}
+      className="task"
+      style={{ opacity: isDragging ? 0.5 : 1 }}
+      onClick={() => setShowDetails(!showDetails)}
+    >
       {isEditing ? (
         <input
           value={title}
@@ -30,10 +36,17 @@ const Task = ({ task }) => {
       ) : (
         <span onClick={handleEdit}>{title}</span>
       )}
-      <p>{task.description}</p>
-      <span className={`priority-${task.priority.toLowerCase()}`}>
-        {task.priority}
-      </span>
+      {showDetails && (
+        <div className="task-details">
+          <p>{task.description}</p>
+          <p>
+            <strong>Due Date:</strong> {task.dueDate}
+          </p>
+          <span className={`priority-${task.priority.toLowerCase()}`}>
+            {task.priority}
+          </span>
+        </div>
+      )}
     </div>
   );
 };
