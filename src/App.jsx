@@ -1,11 +1,8 @@
 import "./App.css";
+import TodoBoard from "./components/TodoBoard";
 
 function App() {
-  return (
-    <>
-      <h1>hi Wellcome</h1>
-    </>
-  );
+  return <TodoBoard />;
 }
 
 export default App;
